@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<body>
+    <div class="right-panel" ng-app="listUsersApp" ng-controller="listUsersController">
+        <div class="content">
+            <div class="animated fadeIn">
+                <h3>Usuarios</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <br />
+                        <button type="button" class="btn btn-success" ng-click="saveUsuario(null)">
+                            <i class="fa fa-plus-circle"></i> Crear usuario
+                        </button>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div>
+                            <label>
+                                Buscar:
+                            </label>
+                            <input ng-model="filterText" type="text" class="form-control neutralForm" placeholder="Buscar" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="table-responsive">
+                        <table id="datatableUsuarios" class="table table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Correo</th>
+                                    <th>Sexo</th>
+                                    <th>Estatus</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in filterData = (fullList | filter : filterText) | limitTo:200:200*(page-1)">
+                                    <td class="tdth" align="left">{{ item.usuario }}</td>
+                                    <td class="tdth" align="left">{{ item.correo }}</td>
+                                    <td class="tdth" align="left" ng-switch="item.sexo">
+                                        <label ng-switch-when="M"><b>Masculino</b></label>
+                                        <label ng-switch-when="F"><b>Femenino</b></label>
+                                    </td>
+                                    <td class="tdth" align="left" ng-switch="item.estatus">
+                                        <label class="text-danger" ng-switch-when="false"><b>Inactivo</b></label>
+                                        <label ng-switch-when="true"><b>Activo</b></label>
+                                    </td>
+                                    <td class="tdth">
+                                        <button type="button" class="btn btn-info" ng-click="saveUsuario(item.correo)">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" ng-click="modalDeleteUsuario(item.correo)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div pagination class="pagination-sm pagination" boundary-links="true" total-items="filterData.length" ng-model="page" first-text="Inicio" previous-text="&lsaquo;" next-text="&rsaquo;" last-text="Final" items-per-page=itemsPage></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts{
+    <script src="~/angularJS/angular.js"></script>
+    <script src="~/js/alerts/sweetalert2.js"></script>
+    <script src="~/js/angular_usuarios.js"></script>
+}

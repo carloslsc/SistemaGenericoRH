@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Guardar";
+}
+
+<body>
+    <div id="right-panel" class="right-panel" ng-app="listSaveUserApp" ng-controller="listSaveUserController">
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Usuario</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="card">
+                    <div class="card-header"><b>Datos generales</b></div>
+                    <div class="card-body card-block">
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row form-group">
+                                    <label for="inputEmail" class="form-control-label">Correo Electrónico:</label>
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electrónico" ng-model="correo_input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row form-group">
+                                    <label for="inputUserName" class="form-control-label">Usuario:</label>
+                                    <input type="text" id="inputUserName" class="form-control" placeholder="Usuario" ng-model="user_input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row form-group">
+                                    <label for="inputSexo" class="form-control-label">Sexo:</label>
+                                    <select name="inputSexo" class="form-control" ng-model="sexo_input">
+                                        <option value="">Seleccione una opción</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="M">Masculino</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row form-group">
+                                    <label for="inputPass" class="form-control-label">Contraseña:</label>
+                                    <input type="password" id="inputPass" class="form-control" placeholder="Contraseña" ng-model="pass_input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row form-group">
+                                    <label for="inputPassTwo" class="form-control-label">Repetir Contraseña:</label>
+                                    <input type="password" id="inputPassTwo" class="form-control" placeholder="Repetir contraseña" ng-model="passTwo_input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" id="btnFinalizar" class="btn btn-success btn-flat m-b-30 m-t-30 float-right" ng-click="btnFinalizarMethod()"><i class="fa fa-save"></i> Guardar Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+
+
+        <div class="clearfix"></div>
+    </div>
+</body>
+
+@section Scripts{
+    <script src="~/angularJS/angular.js"></script>
+    <script src="~/js/alerts/sweetalert2.js"></script>
+    <script src="~/js/angular_usuarios_save.js"></script>
+}
